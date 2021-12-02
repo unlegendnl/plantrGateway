@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
-using Plantr.Gateway.Models;
 
 namespace Plantr.Gateway.Controllers
 {
@@ -41,10 +40,6 @@ namespace Plantr.Gateway.Controllers
             var respBody = await response.Content.ReadAsStringAsync();
 
             return respBody;
-
-
-
-
         }
 
         [HttpPost]

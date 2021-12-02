@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\migue\\source\\repos\\Plantr\\Plantr.Gateway\\Plantr.Gateway.csproj": {}
+    "C:\\Users\\migue\\OneDrive\\Documenten\\plantrGateway\\Plantr.Gateway\\Plantr.Gateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\migue\\source\\repos\\Plantr\\Plantr.Gateway\\Plantr.Gateway.csproj": {
+    "C:\\Users\\migue\\OneDrive\\Documenten\\plantrGateway\\Plantr.Gateway\\Plantr.Gateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\migue\\source\\repos\\Plantr\\Plantr.Gateway\\Plantr.Gateway.csproj",
+        "projectUniqueName": "C:\\Users\\migue\\OneDrive\\Documenten\\plantrGateway\\Plantr.Gateway\\Plantr.Gateway.csproj",
         "projectName": "Plantr.Gateway",
-        "projectPath": "C:\\Users\\migue\\source\\repos\\Plantr\\Plantr.Gateway\\Plantr.Gateway.csproj",
+        "projectPath": "C:\\Users\\migue\\OneDrive\\Documenten\\plantrGateway\\Plantr.Gateway\\Plantr.Gateway.csproj",
         "packagesPath": "C:\\Users\\migue\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\migue\\source\\repos\\Plantr\\Plantr.Gateway\\obj\\",
+        "outputPath": "C:\\Users\\migue\\OneDrive\\Documenten\\plantrGateway\\Plantr.Gateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\migue\\AppData\\Roaming\\NuGet\\NuGet.Config",
