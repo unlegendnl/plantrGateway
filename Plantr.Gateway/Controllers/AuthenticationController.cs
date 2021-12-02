@@ -32,7 +32,7 @@ namespace Plantr.Gateway.Controllers
             var json = JsonConvert.SerializeObject(User);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var url = "https://httpbin.org/post";
+            var url = "https://10.0.145.175/api/Authentication";
             using var client = new HttpClient();
 
             var response = await client.PostAsync(url, data);
