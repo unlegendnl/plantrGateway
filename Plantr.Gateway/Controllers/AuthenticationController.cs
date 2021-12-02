@@ -27,7 +27,7 @@ namespace Plantr.Gateway.Controllers
 
         [HttpPost]
         [Route("/login")]
-        public async Task<String> Login([FromBody] User login)
+        public async Task<string> Login([FromBody] User login)
         {
             var json = JsonConvert.SerializeObject(User);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
