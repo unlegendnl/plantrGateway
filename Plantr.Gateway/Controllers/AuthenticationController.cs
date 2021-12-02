@@ -32,6 +32,7 @@ namespace Plantr.Gateway.Controllers
             var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
 
             var url = "https://10.0.145.175/api/Authentication";
+            //var url = "http://localhost:5010/api/Authentication";
             using var client = new HttpClient();
 
             var response = await client.PostAsync(url, data);
