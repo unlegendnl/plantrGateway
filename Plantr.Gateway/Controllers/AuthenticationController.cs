@@ -29,8 +29,7 @@ namespace Plantr.Gateway.Controllers
         [Route("/login")]
         public async Task<string> Login([FromBody] User login)
         {
-            var json = JsonConvert.SerializeObject(User);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
 
             var url = "https://10.0.145.175/api/Authentication";
             using var client = new HttpClient();
