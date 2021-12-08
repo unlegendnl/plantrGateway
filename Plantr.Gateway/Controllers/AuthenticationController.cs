@@ -49,7 +49,7 @@ namespace Plantr.Gateway.Controllers
         {
             var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
 
-            var url = "http://52.155.228.251/api/User";
+            var url = "http://52.155.228.251/api/User"; //test?
             //var url = "http://localhost:5010/api/Authentication";
             using var client = new HttpClient();
 
