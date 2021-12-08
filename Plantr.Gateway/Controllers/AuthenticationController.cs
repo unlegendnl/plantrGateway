@@ -31,7 +31,7 @@ namespace Plantr.Gateway.Controllers
         {
             var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
 
-            var url = "https://10.0.145.175/api/Authentication";
+            var url = "http://52.155.228.251/api/Authentication";
             //var url = "http://localhost:5010/api/Authentication";
             using var client = new HttpClient();
 
@@ -45,11 +45,19 @@ namespace Plantr.Gateway.Controllers
         [HttpPost]
         [Route("/register")]
 
-        public IActionResult Register([FromBody] User login)
+        public async Task<string> Register([FromBody] User login)
         {
+            var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
 
+            var url = "http://52.155.228.251/api/User";
+            //var url = "http://localhost:5010/api/Authentication";
+            using var client = new HttpClient();
 
-            return null;
+            var response = await client.PostAsync(url, data);
+
+            var respBody = await response.Content.ReadAsStringAsync();
+
+            return respBody;
         }
 
 
