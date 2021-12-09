@@ -40,7 +40,6 @@ C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\bin\Debug\net5.0
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\obj\Debug\net5.0\Plantr.Gateway.csprojAssemblyReference.cache
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\obj\Debug\net5.0\Plantr.Gateway.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\obj\Debug\net5.0\Plantr.Gateway.AssemblyInfoInputs.cache
 C:\Users\migue\OneDrive\Documenten\plantrGateway\Plantr.Gateway\obj\Debug\net5.0\Plantr.Gateway.AssemblyInfo.cs

@@ -27,12 +27,6 @@ namespace Plantr.Gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //CORs
-            services.AddCors(options => {
-                options.AddPolicy("AllowMyOrigin",
-                builder => builder.WithOrigins("*"));
-            });
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -43,8 +37,6 @@ namespace Plantr.Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //cors
-            app.UseCors("AllowMyOrigin");
 
             if (env.IsDevelopment())
             {
@@ -56,6 +48,10 @@ namespace Plantr.Gateway
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseAuthorization();
 
