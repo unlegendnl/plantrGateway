@@ -28,17 +28,9 @@ namespace Plantr.Gateway
         public void ConfigureServices(IServiceCollection services)
         {
             //CORs
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                        .AllowCredentials();
-                    });
+            services.AddCors(options => {
+                options.AddPolicy("AllowMyOrigin",
+                builder => builder.WithOrigins("*"));
             });
 
             services.AddControllers();
@@ -51,7 +43,8 @@ namespace Plantr.Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+            //cors
+            app.UseCors("AllowMyOrigin");
 
             if (env.IsDevelopment())
             {

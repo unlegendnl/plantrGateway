@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AspNetCore.Cors;
+
 
 namespace Plantr.Gateway.Controllers
 {
+    [EnableCors("AllowMyOrigin")]
     [AllowAnonymous]
     [ApiController]
     [Route("[controller]")]
@@ -24,7 +27,7 @@ namespace Plantr.Gateway.Controllers
             _logger = logger;
         }
 
-
+        [EnableCors("AllowMyOrigin")]
         [HttpPost]
         [Route("/login")]
         public async Task<string> Login([FromBody] User login)
@@ -42,6 +45,7 @@ namespace Plantr.Gateway.Controllers
             return respBody;
         }
 
+        [EnableCors("AllowMyOrigin")]
         [HttpPost]
         [Route("/register")]
 
