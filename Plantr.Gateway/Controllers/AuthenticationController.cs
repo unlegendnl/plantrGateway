@@ -10,7 +10,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
 using Microsoft.AspNetCore.Cors;
-
+using Microsoft.Extensions.Configuration;
 
 namespace Plantr.Gateway.Controllers
 {
@@ -20,10 +20,12 @@ namespace Plantr.Gateway.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly ILogger<AuthenticationController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public AuthenticationController(ILogger<AuthenticationController> logger)
+        public AuthenticationController(ILogger<AuthenticationController> logger, IConfiguration configuration)
         {
             _logger = logger;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -36,17 +38,16 @@ namespace Plantr.Gateway.Controllers
         [Route("/login")]
         public async Task<string> Login([FromBody] User login)
         {
-            var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
+            string authUri = _configuration.GetValue<string>("Microservices:AuthService");
+            string responseBody = string.Empty;
 
-            var url = "http://52.155.228.251/api/Authentication";
-            //var url = "http://localhost:5010/api/Authentication";
-            using var client = new HttpClient();
+            using(var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"{authUri}/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                responseBody = await response.Content.ReadAsStringAsync();
+            }
 
-            var response = await client.PostAsync(url, data);
-
-            var respBody = await response.Content.ReadAsStringAsync();
-
-            return respBody;
+            return responseBody;
         }
 
         [HttpPost]
@@ -54,17 +55,16 @@ namespace Plantr.Gateway.Controllers
 
         public async Task<string> Register([FromBody] User login)
         {
-            var data = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
+            string authUri = _configuration.GetValue<string>("Microservices:AuthService");
+            string responseBody = string.Empty;
 
-            var url = "http://52.155.228.251/api/User"; //test?
-            //var url = "http://localhost:5010/api/Authentication";
-            using var client = new HttpClient();
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"{authUri}/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                responseBody = await response.Content.ReadAsStringAsync();
+            }
 
-            var response = await client.PostAsync(url, data);
-
-            var respBody = await response.Content.ReadAsStringAsync();
-
-            return respBody;
+            return responseBody;
         }
 
 
