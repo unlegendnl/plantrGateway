@@ -66,6 +66,23 @@ namespace Plantr.Gateway.Controllers
 
             return responseBody;
         }
+        
+        [HttpPost]
+        [Route("/profile")]
+
+        public async Task<string> Profile([FromBody] User login)
+        {
+            string authUri = _configuration.GetValue<string>("Microservices:ProfileService");
+            string responseBody = string.Empty;
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"{authUri}/api/profile", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                responseBody = await response.Content.ReadAsStringAsync();
+            }
+
+            return responseBody;
+        }
 
 
 
