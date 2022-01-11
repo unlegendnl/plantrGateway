@@ -44,7 +44,7 @@ namespace Plantr.Gateway.Controllers
             using(var client = new HttpClient())
             {
                 //var response = await client.PostAsync($"{authUri}/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
-                var response = await client.PostAsync($"plantr-auth-service/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("plantr-auth-service/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
@@ -62,7 +62,7 @@ namespace Plantr.Gateway.Controllers
             using (var client = new HttpClient())
             {
                 //var response = await client.PostAsync($"{authUri}/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
-                var response = await client.PostAsync($"plantr-auth-service/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("plantr-auth-service/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
@@ -79,7 +79,7 @@ namespace Plantr.Gateway.Controllers
 
             using (var client = new HttpClient())
             {
-                var response = await client.PostAsync($"plantr-auth-service/api/profile", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync("plantr-auth-service/api/profile", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
