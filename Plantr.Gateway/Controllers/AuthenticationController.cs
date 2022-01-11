@@ -22,10 +22,13 @@ namespace Plantr.Gateway.Controllers
         private readonly ILogger<AuthenticationController> _logger;
         private readonly IConfiguration _configuration;
 
+        private readonly string _apiUrl;
+
         public AuthenticationController(ILogger<AuthenticationController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
+            _apiUrl = _configuration.GetValue<string>("Microservices:AuthService");
         }
 
         [HttpGet]
@@ -38,13 +41,12 @@ namespace Plantr.Gateway.Controllers
         [Route("/login")]
         public async Task<string> Login([FromBody] User login)
         {
-            string authUri = _configuration.GetValue<string>("Microservices:AuthService");
             string responseBody = string.Empty;
 
             using(var client = new HttpClient())
             {
-                //var response = await client.PostAsync($"{authUri}/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
-                var response = await client.PostAsync("plantr-auth-service/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync($"{_apiUrl}/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                //var response = await client.PostAsync("plantr-auth-service/api/authentication", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
@@ -56,13 +58,12 @@ namespace Plantr.Gateway.Controllers
 
         public async Task<string> Register([FromBody] User login)
         {
-            string authUri = _configuration.GetValue<string>("Microservices:AuthService");
             string responseBody = string.Empty;
 
             using (var client = new HttpClient())
             {
-                //var response = await client.PostAsync($"{authUri}/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
-                var response = await client.PostAsync("plantr-auth-service/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                var response = await client.PostAsync($"{_apiUrl}/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
+                //var response = await client.PostAsync("plantr-auth-service/api/user", new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json"));
                 responseBody = await response.Content.ReadAsStringAsync();
             }
 
